@@ -6,9 +6,6 @@ from datetime import datetime, timedelta
 import boto3
 
 
-AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
-AWS_ACCESS_KEY = os.getenv("AWS_ACCESS_KEY")
-
 APP_ID = os.getenv("PCO_APP_ID")
 SECRET = os.getenv("PCO_SECRET")
 
