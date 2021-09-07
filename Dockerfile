@@ -7,9 +7,17 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY main.py requirements.txt ./
+ENV APPDIR=/app
 
-RUN python -m pip install --no-cache-dir --prefer-binary --upgrade --user \
-    -r requirements.txt 
+# Create the app dir and set permissions
+RUN mkdir $APPDIR
 
-ENTRYPOINT [ "sh" ]
+# migrate the app
+WORKDIR $APPDIR
+
+COPY main.py run.sh requirements.txt ./
+
+RUN pip3 install -r requirements.txt 
+
+ENTRYPOINT [ "/bin/bash", "./run.sh" ]
+# ENTRYPOINT [ "sh" ]

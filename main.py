@@ -14,7 +14,7 @@ SECRET = os.getenv("PCO_SECRET")
 
 MEMBER_MANIFEST = list()
 
-client = boto3.client('ses', 'us-west-2', aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+client = boto3.client('ses', 'us-west-2')
 
 
 def main():
